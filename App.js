@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+
+import {Platform, StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+
 import Home from './src/Components/Home/Home';
 import About from './src/Components/About/About';
 import Contact from './src/Components/Contact/Contact';
+
+var s = require('./src/style');
 
 
 const instructions = Platform.select({
@@ -17,9 +21,14 @@ export default class App extends Component {
   render() {
     return (
       <View>
-        <Home />
-        <About />
-        <Contact />
+        <View style={s.imageWrap}>
+          <Image style={s.image} source={require('./src/Assets/Images/ichtus.png')}/>
+        </View>
+        <ScrollView style={s.scrollView}>
+          <Home />
+          <About />
+          <Contact />
+        </ScrollView>
       </View>
     );
   }
