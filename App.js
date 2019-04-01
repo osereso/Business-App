@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Platform, StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+import {Platform, StyleSheet, Text, View, Image, ScrollView, Switch} from 'react-native';
 
 import Home from './src/Components/Home/Home';
 import About from './src/Components/About/About';
@@ -18,11 +18,26 @@ const instructions = Platform.select({
 
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      logoHidden: false
+    }
+  }
+
   render() {
+    let logoHidden = this.state.logoHidden;
+    let img = <Text></Text>;
+    if (logoHidden) {
+      img = <Text></Text>;
+    } else {
+      img = <Image style={s.image} source={require('./src/Assets/Images/ichtus.png')} />
+    }
     return (
-      <View>
+      <View style={styles.container}>
+        {img}
         <View style={s.imageWrap}>
-          <Image style={s.image} source={require('./src/Assets/Images/ichtus.png')}/>
+          <Switch onValueChange={(value) => this.setState({logoHidden: value})} value={this.state.logoHidden} />
         </View>
         <ScrollView style={s.scrollView}>
           <Home />
@@ -33,5 +48,13 @@ export default class App extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+});
 
 

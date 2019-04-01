@@ -23,12 +23,12 @@ module.exports = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 50,
-
     },
 
     image: {
         width: 130,
         height: 130,
+        padding: 20,
     },
 
     scrollView: {
